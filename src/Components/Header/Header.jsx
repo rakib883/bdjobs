@@ -23,6 +23,8 @@ import { HiOutlineDocumentCheck } from "react-icons/hi2";
 import { FaPhoneAlt } from "react-icons/fa";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { motion } from "framer-motion"
+import { RiArrowDownSFill } from "react-icons/ri";
+import { RiArrowDownSLine } from "react-icons/ri";
 const Header = () => {
     const [headerBanner , setHeaserBanner] = useState(true)
     const [userchakri,setChakri] = useState(true)
@@ -101,7 +103,21 @@ const Header = () => {
 
 
 
+    // mobile carrier profile start
+       const [mobileProfile , setMobileProfile] = useState(false)
 
+       const mobileprofile =()=>{
+        setMobileProfile(!mobileProfile)
+       }
+    // mobile carrier profile end
+
+    //  mobile profile edit start
+
+    const [profilEdit ,setMobileProfileEdit] = useState(false)
+    const mobileProfileEdit = ()=>{
+        setMobileProfileEdit(!profilEdit)
+    }
+    // mobile profile edit end
 
 
 
@@ -271,9 +287,80 @@ const Header = () => {
             {/* mobile phone menu area start */}
                 {
                     mobileMenu ? 
-                    <motion.div className="mobile-area-start z-50 lg:hidden min-h-screen w-full bg-[#rgb(232 232 232)] ">
-                        <motion.div initial={{x:100, opacity:0}} animate ={{x:0, opacity:1}} transition={{delay:0, duration:.8}} className="all-content px-4 w-1/2 min-h-screen  absolute right-0   bg-[green]">
-                             bvcbcvbcvbc
+                    <motion.div className="mobile-area-start absolute top-26 fixed   z-50 lg:hidden min-h-screen w-full bg-[##ffffff] ">
+                        <motion.div initial={{x:100, opacity:0}} animate ={{x:0, opacity:1}} transition={{delay:0, duration:.8}} className="all-content   w-1/2 min-h-screen  absolute right-0  bg-[white]">
+                            <div className="mobile-menu-main-area">
+                                <ul className="   ">
+                                    <li className="text-[14px] font-MainFont cursor-pointer hover:bg-[#F5F5F5] py-4 px-4 ">
+                                        My Bdjobs
+                                    </li>
+                                    <li className="text-[14px] font-MainFont cursor-pointer hover:bg-[#F5F5F5] py-2  px-4 ">
+                                       <div className="all-content mt-7 relative  w-full ">
+                                            <img className="h-4" src={ menuIcon} alt="" />
+                                            <span className="text-[#B3003C] border   border-[#B3003C] text-[10px]  rounded-full px-3 items-center py-[-80px] absolute bottom-4 right-[80px]">new</span>
+                                       </div>
+                                    </li>
+                                    <li className="text-[16px] font-MainFont cursor-pointer hover:bg-[#F5F5F5] py-4 px-4 ">
+                                        Employers
+                                    </li>
+                                    <li className="text-[14px] font font-MainFont cursor-pointer hover:bg-[#F5F5F5] py-4 px-4 ">
+                                        ভিডিও সিভি
+                                    </li>
+                                    <li  className="text-[14px] font-MainFont flex items-center cursor-pointer hover:bg-[#F5F5F5] py-4 ">
+                                        <div  className="all-content flex flex-col">
+                                            <div className="main-click-area flex">
+                                                <span onClick={mobileprofile} className="px-4">ক্যারিয়ার রিসোর্স</span><span> <RiArrowDownSFill className="text-[14px] "/> </span>
+                                            </div>
+                                        </div> 
+                                    </li>
+                                    <li className="overflow-hidden ">
+                                           { mobileProfile ?
+                                                <motion.div initial ={{x:200, opacity:1}} animate={{x:0, opacity:1}} transition={{delay:.5, duration:.5}}   className="all-content w-full  font-MainFont text-[13px] cursor-pointer ">
+                                                    <ul className="flex flex-col gap-2">
+                                                        <li className="px-4 py-2 mt-1 font-MainFont text-[13px] cursor-pointer hover:bg-[gray] duration-300">ক্যারিয়ার গাইড</li>
+                                                        <li className="px-4 py-2 mt-1 font-MainFont text-[13px] cursor-pointer hover:bg-[gray] duration-300">সাক্ষাত্কার টিপস</li>
+                                                        <li className="px-4 py-2 mt-1 font-MainFont text-[13px] cursor-pointer hover:bg-[gray] duration-300">জীবনবৃত্তান্ত লিখন টিপস</li>
+                                                        <li className="px-4 py-2 mt-1 font-MainFont text-[13px] cursor-pointer hover:bg-[gray] duration-300">কভার লেটার</li>
+                                                        <li className="px-4 py-2 mt-1 font-MainFont text-[13px] cursor-pointer hover:bg-[gray] duration-300">প্রতিবেদন</li>
+                                                        <li className="px-4 py-2 mt-1 font-MainFont text-[13px] cursor-pointer hover:bg-[gray] duration-300">ক্যারিয়ার পরামর্শদান</li> 
+                                                        <li className="px-4 py-2 mt-1 font-MainFont text-[13px] cursor-pointer hover:bg-[gray] duration-300">শিক্ষা সহায়িকা</li>
+                                                         <li className=" bg-[#2F64A3] mb-[-20px] hover:bg-[#EEEEEE] duration-300">
+                                                            <div onClick={mobileProfileEdit} className="mobile-main-profile mx-4  gap-2 py-4 flex items-center group">
+                                                                <img className="h-10 w-10  rounded-full border" src={profileImage} alt="" />
+                                                                <p className="text-[white] group-hover:text-[#6B89A4] duration-300">Rakib Sheikh</p>
+                                                                <RiArrowDownSLine className="text-[16px] group-hover:text-[#2F64A3]" />
+                                                            </div>
+                                                         </li>
+                                                         <li></li>
+                                                    </ul>
+                                                 </motion.div> : ""
+                                            }
+                                    </li>
+                                    <li>
+                                        {
+                                            profilEdit  ? 
+                                            <motion.div initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:.5, duration:.5}} className="bg-[#2F64A3] py-4 ">
+                                            <motion.ul  className="mx-4 relative">
+                                               <li  className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span><BiSolidEdit className="text-[18px]  text-[#777777] "/></span><span> বিডিজবস প্রোফাইল এডিট </span></li>
+                                               <li className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span><IoDocumentOutline className="text-[18px]  text-[#777777] "/></span><span>  বিডিজবস প্রোফাইল দেখা </span></li>
+                                               <li className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span><HiMiniVideoCamera className="text-[18px]  text-[#777777] "/></span><span>    ভিডিও সিভি  </span></li>
+                                               <li className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span><MdSend className="text-[18px]  text-[#777777] "/></span><span>  সিভি ইমেইল</span></li>
+                                               <li className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span className="bg-[black] h-[.5px] my-4 w-full"></span></li>
+                                               <li className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span><IoIosStar className="text-[18px]  text-[#777777] "/></span><span>  শর্টলিস্টেড চাকরি </span></li>
+                                               <li className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span><TiFlowMerge className="text-[18px]  text-[#777777] "/></span><span>   ফলো করা কোম্পানির লিস্ট </span></li>
+                                               <li className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span><HiOutlineDocumentCheck className="text-[18px]  text-[#777777] "/></span><span>   আবেদনকৃত চাকরি </span></li>
+                                               <li className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span><BiSolidEdit className="text-[18px]  text-[#777777] "/></span><span>  শর্টলিস্টেড চাকরি </span></li>
+                                               <li className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span className="bg-[black] h-[.5px] my-4 w-full"></span></li>
+                                               <li className="text-[13px] flex gap-1 items-center text-[#777777] my-1" ><span><BiSolidEdit className="text-[18px]  text-[#777777] "/></span><span>  সাইন আউট </span></li>
+                                            </motion.ul>
+                                            <div className="profile-top-border absolute top-0 bg-[#2F64A3] h-[2px] w-full"></div>
+                                         </motion.div> : ""
+                                        }
+                                     
+                                    </li>
+                                    <li> <li className="cursor-pointer hover:bg-[#F5F5F5] py-4 px-4"> <p className="text-[13px] flex items-center gap-1"> <span><FaPhoneAlt /></span><span>যোগাযোগ</span></p></li></li>
+                                </ul>
+                            </div>
                         </motion.div>
                      </motion.div> : ""
                 }
